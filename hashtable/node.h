@@ -13,6 +13,8 @@ typedef struct nodeStruct{
 
 node create_node(void *key, void *value);
 
+node chain_node(node head, node new_node);
+
 void destroy_node(node n);
 
 void print_node(node n);
