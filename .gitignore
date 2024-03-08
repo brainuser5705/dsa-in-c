@@ -1,0 +1,4 @@
+stack_adt/
+*.exe
+test.c
+.idea
