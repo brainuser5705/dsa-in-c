@@ -15,10 +15,8 @@ typedef struct nodeStruct{
 
 node create_node(void *key, void *value){
     node n = (node)malloc(sizeof(struct nodeStruct));
-    n->key = malloc(sizeof(void *));    // ptrs need mem to be allocated
-    n->value = malloc(sizeof(void *));
-    n->key = key;
-    n->value = value;
+    (n->key) = key;
+    (n->value) = value;
     n->next = NULL;
     return n;
 }
@@ -35,17 +33,13 @@ void chain_node(node head, node new_node){
   prev->next = new_node;
 }
 
-void destroy_node(node n){
-    free(n->key);
-    free(n->value);
+void destroy_node(node head){
+  node next = head->next;
+  if (next){
+    destroy_node(next);
+  }
 
-    // free chained nodes
-    node curr = n;
-    while (curr) {
-        n = n->next;
-        free(curr);
-        curr = n;
-    }
+  free(head);
 }
 
 void print_node(node n){

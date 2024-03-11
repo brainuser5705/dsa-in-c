@@ -4,8 +4,8 @@
 
 int main(void){
 
-  node n1 = create_node((void *)"a", (void *)2);
-  node n2 = create_node((void *)"b", (void *)3);
+  node n1 = create_node((void *)'a', (void *)2);
+  node n2 = create_node((void *)'b', (void *)3);
 
   printf("n1: ");
   print_node(n1);
@@ -15,6 +15,7 @@ int main(void){
 
   chain_node(n1, n2);
   printf("n1: ");
+  print_node(n1);
 
   destroy_node(n1);
 
