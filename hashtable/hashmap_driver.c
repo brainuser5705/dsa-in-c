@@ -7,9 +7,13 @@
 
 int main(){
 
-    hashmap map = hashmap_create();
+  hashmap map = hashmap_create();
 
-    hashmap_destroy(map);
+  hashmap_add(map, (void *)'a', (void *)1);
+ 
+  hashmap_print(map);
 
-    return 0;
+  hashmap_destroy(map);
+
+  return 0;
 }

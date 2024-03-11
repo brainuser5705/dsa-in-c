@@ -44,24 +44,21 @@ void *hashmap_get(hashmap map, void *key);
 void hashmap_remove(hashmap map, void *key);
 
 void hashmap_destroy(hashmap map){
-  node *curr = map->arr;
-  while (curr) {
-    destroy_node(*curr);
-    curr++;
+  for (int i = 0; i < HASHMAP_CAPACITY; i++){
+    destroy_node(*(map->arr + i));
   }
   free(map->arr);
   free(map);
 }
 
 void hashmap_print(hashmap map){
-    node *prev;
-    node *n = map->arr;
-    while (n) {
-        prev = n;
-        print_node(*prev);
-        n++;
+  for (int i = 0; i < HASHMAP_CAPACITY; i++){
+    node *index = map->arr + i;
+    if (index){
+      print_node(*index);
     }
-    printf("hashmap size: %d", map->size);
+  }
+  printf("hashmap size: %d", map->size);
 }
 
 int hash_value(void *key){

@@ -34,12 +34,10 @@ void chain_node(node head, node new_node){
 }
 
 void destroy_node(node head){
-  node next = head->next;
-  if (next){
-    destroy_node(next);
+  if (head){
+    destroy_node(head->next);
+    free(head);
   }
-
-  free(head);
 }
 
 void print_node(node n){
