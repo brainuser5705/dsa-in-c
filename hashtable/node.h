@@ -5,15 +5,14 @@
 #ifndef DATA_STRUCTURES_NODE_H
 #define DATA_STRUCTURES_NODE_H
 
-typedef struct nodeStruct{
-    void *key;
-    void *value;
-    struct nodeStruct *next;
-} *node;
+#ifndef NODE_IMPLEMENTATION
+#define NODE_IMPLEMENTATION
+typedef struct {} *node;
+#endif
 
 node create_node(void *key, void *value);
 
-node chain_node(node head, node new_node);
+void chain_node(node head, node new_node);
 
 void destroy_node(node n);
 

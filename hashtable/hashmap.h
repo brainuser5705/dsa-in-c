@@ -6,7 +6,6 @@
 #define DATA_STRUCTURES_HASHMAP_H
 
 #ifndef HASHMAP_IMPLEMENTATION
-typedef struct {} *node;
 typedef struct {} *hashmap;
 #endif
 

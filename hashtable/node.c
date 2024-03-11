@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct nodeStruct{
+    void *key;
+    void *value;
+    struct nodeStruct *next;
+} *node;
+
+#define NODE_IMPLEMENTATION
 #include "node.h"
 
 node create_node(void *key, void *value){
@@ -16,21 +23,36 @@ node create_node(void *key, void *value){
     return n;
 }
 
+void chain_node(node head, node new_node){
+  node prev;
+  node curr = head;
+
+  while (curr){
+    prev = curr;
+    curr = curr->next;
+  }
+
+  prev->next = new_node;
+}
+
 void destroy_node(node n){
     free(n->key);
     free(n->value);
 
     // free chained nodes
-    node prev = n;
-    while (n) {
+    node curr = n;
+    while (curr) {
         n = n->next;
-        free(prev);
+        free(curr);
+        curr = n;
     }
 }
 
 void print_node(node n){
     while (n){
-        printf("%#05lx = %#05lx\n", (unsigned long)(n->key), (unsigned long)(n->value));
+        printf("%#05lx = %#05lx\n", 
+               (unsigned long)(n->key), 
+               (unsigned long)(n->value));
         n = n->next;
     }
 }

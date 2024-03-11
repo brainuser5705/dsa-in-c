@@ -4,16 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "node.h"
-
 #define HASHMAP_CAPACITY    10
 
-int hash_value(void *key);
+#define NODE_IMPLEMENATION
+#include "node.h"
 
 typedef struct hashmap_struct{
     node *arr;
     int size;
 } *hashmap;
+
+#define HASHMAP_IMPLEMENTATION
+#include "hashmap.h"
+
+int hash_value(void *key);
 
 hashmap hashmap_create(){
     hashmap map = (hashmap)malloc(sizeof(struct hashmap_struct));
@@ -44,7 +48,7 @@ void hashmap_destroy(hashmap map){
     node *n = map->arr;
     while (n) {
         prev = n;
-        destroy_node(*prev);
+        destroy_node(prev);
         free(prev);
         n++;
     }
