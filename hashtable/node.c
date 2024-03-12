@@ -21,21 +21,38 @@ node create_node(void *key, void *value){
     return n;
 }
 
-void chain_node(node head, node new_node){
-  node prev;
+node chain_node(node head, node new_node){
+  void *new_key = new_node->key;
+
+  node prev = NULL; 
   node curr = head;
 
   while (curr){
+    // replaces node if same key
+    if (curr->key == new_key){
+      new_node->next = curr->next;
+      // must set to NULL otherwise destroy node would break the chain
+      curr->next = NULL;
+      destroy_node(curr);
+      break;
+    }
     prev = curr;
     curr = curr->next;
   }
 
-  prev->next = new_node;
+  if (prev){
+    prev->next = new_node;
+    return head;
+  }else{
+    return new_node;
+  }
+
 }
 
 void destroy_node(node head){
   if (head){
     destroy_node(head->next);
+    // does not free key or value, responsibility is on user
     free(head);
   }
 }

@@ -23,8 +23,9 @@ node create_node(void *key, void *value);
  * Appends the new node to the end of the chain 
  * @param head - the head node of the chain
  * @param new_node - the new node to append
+ * @return the head node of the chain
  */
-void chain_node(node head, node new_node);
+node chain_node(node head, node new_node);
 
 /**
  * Destroys the chain 

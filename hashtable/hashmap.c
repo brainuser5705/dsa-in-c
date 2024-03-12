@@ -33,7 +33,7 @@ void hashmap_add(hashmap map, void *key, void *value){
     if (*index == NULL){
         *index = new_node;
     }else{
-        chain_node(*index, new_node);
+        *index = chain_node(*index, new_node);
     }
 
     map->size++;
@@ -53,12 +53,13 @@ void hashmap_destroy(hashmap map){
 
 void hashmap_print(hashmap map){
   for (int i = 0; i < HASHMAP_CAPACITY; i++){
+    printf("index %i of hashmap\n", i);
     node *index = map->arr + i;
     if (index){
       print_node(*index);
     }
   }
-  printf("hashmap size: %d", map->size);
+  printf("hashmap size: %d\n", map->size);
 }
 
 int hash_value(void *key){
