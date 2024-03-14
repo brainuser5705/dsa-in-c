@@ -33,13 +33,19 @@ void hashmap_add(hashmap map, void *key, void *value){
     if (*index == NULL){
         *index = new_node;
     }else{
-        *index = chain_node(*index, new_node);
+      int added_new_node = chain_node(index, new_node);
+      if (added_new_node) map->size += 1;
     }
-
-    map->size++;
 }
 
-void *hashmap_get(hashmap map, void *key);
+void *hashmap_get(hashmap map, void *key){
+  node *index = (map->arr + hash_value(key));
+  node return_node = get_node(*index, key);
+  if (return_node == NULL){
+    printf("Key %#05lx is not in map\n", (unsigned long) key);
+  }
+  return get_node_value(return_node);
+}
 
 void hashmap_remove(hashmap map, void *key);
 
