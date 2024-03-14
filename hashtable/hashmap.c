@@ -32,6 +32,7 @@ void hashmap_add(hashmap map, void *key, void *value){
     node *index = (map->arr + hash_value(key));
     if (*index == NULL){
         *index = new_node;
+        map->size += 1;
     }else{
       int added_new_node = chain_node(index, new_node);
       if (added_new_node) map->size += 1;

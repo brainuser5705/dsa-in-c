@@ -21,6 +21,7 @@ int chain_node(node *head_index, node new_node){
   node curr = *head_index;
 
   int added_new_node = 1;
+
   while (curr){
     // replaces node if same key
     if (curr->key == new_key){
