@@ -33,7 +33,6 @@ int chain_node(node* head_index, node new_node);
  * @param head - the head node of the chain
  * @param key - the key to search for 
  * @return the node that has the key
- }
  */
 node get_node(node head, void *key); 
 
@@ -41,8 +40,15 @@ node get_node(node head, void *key);
  * Find the node in the chain with the matching key
  * @param head - the head ndoe of the chain
  * @param key - the key to search for in the chain
-*/  
+ */  
 node find_node(node head, void *key);
+
+/**
+ * Remove node from the chain 
+ * @param head_index - pointer to the head node of the chain 
+ * @param n - the node to remove 
+ */
+void remove_node(node *head_index, node n);
 /**
  * Destroys the chain 
  * @param n - the head node of the chain

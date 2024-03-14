@@ -57,6 +57,21 @@ node get_node(node head, void *key){
   return head; // NULL
 }
 
+void remove_node(node *head_index, node n){
+  node prev = NULL;
+  node curr = *head_index;
+  while (curr){
+    if (curr == n){
+      if (prev == NULL){
+        // replace the head node
+        *head_index = n->next; 
+      }else{
+        prev->next = n->next;
+      }
+    }
+  }
+}
+
 void destroy_node(node head){
   if (head){
     destroy_node(head->next);

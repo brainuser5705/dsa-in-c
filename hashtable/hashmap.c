@@ -48,7 +48,14 @@ void *hashmap_get(hashmap map, void *key){
   return get_node_value(return_node);
 }
 
-void hashmap_remove(hashmap map, void *key);
+void hashmap_remove(hashmap map, void *key){
+  node *index = (map->arr + hash_value(key));
+  node return_node = get_node(*index, key);
+  if (return_node == NULL){
+    printf("Key %#05lx is not in map\n", (unsigned long) key);
+  }
+  remove_node(index, return_node);
+}
 
 void hashmap_destroy(hashmap map){
   for (int i = 0; i < HASHMAP_CAPACITY; i++){
