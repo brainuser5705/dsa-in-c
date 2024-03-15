@@ -18,6 +18,8 @@ int main(){
   hashmap_print(map);
 
   hashmap_remove(map, (void *)'a');
+  hashmap_remove(map, (void *)'b');
+  hashmap_remove(map, (void *)'c');
 
   hashmap_print(map);
 
