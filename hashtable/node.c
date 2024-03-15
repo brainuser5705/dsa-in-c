@@ -57,7 +57,7 @@ node get_node(node head, void *key){
   return head; // NULL
 }
 
-void remove_node(node *head_index, node n){
+node remove_node(node *head_index, node n){
   node prev = NULL;
   node curr = *head_index;
   while (curr){
@@ -69,7 +69,10 @@ void remove_node(node *head_index, node n){
         prev->next = n->next;
       }
     }
+    prev = curr;
+    curr = curr->next;
   }
+  return prev;
 }
 
 void destroy_node(node head){

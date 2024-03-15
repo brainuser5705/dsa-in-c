@@ -54,7 +54,7 @@ void hashmap_remove(hashmap map, void *key){
   if (return_node == NULL){
     printf("Key %#05lx is not in map\n", (unsigned long) key);
   }
-  remove_node(index, return_node);
+  map->size -= (remove_node(index, return_node) ? 1 : 0);
 }
 
 void hashmap_destroy(hashmap map){

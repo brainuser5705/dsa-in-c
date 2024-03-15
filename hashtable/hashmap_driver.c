@@ -17,6 +17,10 @@ int main(){
   //hashmap_add(map, (void *)'a', (void *)10);
   hashmap_print(map);
 
+  hashmap_remove(map, (void *)'a');
+
+  hashmap_print(map);
+
   /*
   int val = (int)hashmap_get(map, (void *)'d');
   if (val){

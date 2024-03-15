@@ -48,7 +48,7 @@ node find_node(node head, void *key);
  * @param head_index - pointer to the head node of the chain 
  * @param n - the node to remove 
  */
-void remove_node(node *head_index, node n);
+node remove_node(node *head_index, node n);
 /**
  * Destroys the chain 
  * @param n - the head node of the chain
